@@ -4,6 +4,8 @@ import numpy as np
 Helper Functions
 """
 
+#this is ripped directly from the genetic they created because this is basically already the best features that could be used for a genetic, and in full honesty i dont really know what other features i could possibly come up with. i know that removing some features may be a good idea to optimize how much training is needed but i believe it doesnt matter enough
+
 
 def bool_to_np(board):
     f = lambda x: 1 if x == True else 0

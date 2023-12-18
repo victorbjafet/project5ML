@@ -23,15 +23,6 @@ BODIES = [
     (((0, 0), (1, 0), (1, 1), (2, 0)), CYAN),  # pyramid
 ]
 
-BODIES2 = [
-    (((0, 0), (0, 1), (0, 2), (0, 3)), RED),  # stick
-    (((0, 0), (0, 1), (0, 2), (1, 0)), ORANGE),  # L1
-    (((0, 0), (1, 0), (1, 1), (1, 2)), ORANGE),  # L2
-    (((0, 0), (1, 0), (1, 1), (2, 1)), GREEN),  # S1
-    (((0, 1), (1, 0), (1, 1), (2, 0)), GREEN),  # S2
-    (((0, 0), (0, 1), (1, 0), (1, 1)), TURQ),  # Square
-    (((0, 0), (1, 0), (1, 1), (2, 0)), CYAN),  # pyramid
-]
 
 
 class Piece:
@@ -50,13 +41,13 @@ class Piece:
 
     def __init__(self, body=None, color=None):
         if body == None:
-            self.body, self.color = choice(BODIES)
+            self.body, self.color = choice(BODIES) #whenever a piece object is created, it becomes one of the random pieces from the list above
         else:
             self.body = body
             self.color = color
         self.skirt = self.calc_skirt()
 
-    def calc_skirt(self):
+    def calc_skirt(self): 
         skirt = []
         for i in range(4):
             low = 1000
@@ -69,7 +60,6 @@ class Piece:
 
     def get_next_rotation(self): #just rotates the piece
         width = len(self.skirt)
-        # height = max([b[1] for b in self.body])
         new_body = [(width - b[1], b[0]) for b in self.body]
         leftmost = min([b[0] for b in new_body])
         new_body = [(b[0] - leftmost, b[1]) for b in new_body]

@@ -1,16 +1,21 @@
-from board import Board
 from time import sleep
+
+from board import Board
+from piece import Piece
 
 from demo_algorithms.greedy import Greedy_AI
 from demo_algorithms.genetic import Genetic_AI
 from demo_algorithms.random import RandomChoice_NOT_AI
 from demo_algorithms.mcts import MCTS_AI
 
-from piece import Piece
+from genetic_victor import Genetic_AI_Victor
+
 import pygame
 
-BLACK = 0, 0, 0
-WHITE = 255, 255, 255
+
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 
 
@@ -36,6 +41,13 @@ class Game:
             self.ai = MCTS_AI()
         elif mode == "random":
             self.ai = RandomChoice_NOT_AI()
+
+        elif mode == "genetic_victor": # this is what is added by me :3
+            if agent == None:
+                self.ai = Genetic_AI_Victor() #runs an ai with a completely random genotype that doesnt really do anything
+            else:
+                self.ai = agent #runs from an agent, meaning it is a pickled instance of the Genetic_AI_Victor class that was trained and happened to have a good genotype (so it was saved)
+            
         else:
             self.ai = None
 
