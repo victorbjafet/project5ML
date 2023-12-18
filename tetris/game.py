@@ -23,6 +23,7 @@ GREEN = (0, 255, 0)
 
 class Game:
     def __init__(self, mode, agent=None):
+        self.agent = agent
         self.board = Board()
         self.curr_piece = Piece()
         self.y = 20
@@ -64,7 +65,7 @@ class Game:
             if self.board.top_filled():
                 break
         print("Pieces Dropped: "+ str(self.pieces_dropped) + " | Rows Cleared: " + str(self.rows_cleared))
-        if self.rows_cleared > 10:
+        if self.rows_cleared > 100 and self.agent == None:
             pickle.dump(self.ai, open('agents/ai' + str(self.pieces_dropped) + "-" +str(self.rows_cleared) +'.pkl', 'wb'))
         return self.pieces_dropped, self.rows_cleared
 
