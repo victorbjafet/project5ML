@@ -14,7 +14,7 @@ class Genetic_AI_Victor:
             if(mutate == False):
                 self.genotype = genotype
             else:
-                # mutate given genotype
+                # mutate the weights
                 mutation = np.array([np.random.normal(1, mutation_rate) for i in range(num_features)])
                 self.genotype = genotype * mutation
 

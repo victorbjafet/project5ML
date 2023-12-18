@@ -11,6 +11,8 @@ from demo_algorithms.mcts import MCTS_AI
 from genetic_victor import Genetic_AI_Victor
 
 import pygame
+import pickle
+import random
 
 
 
@@ -62,6 +64,8 @@ class Game:
             if self.board.top_filled():
                 break
         print("Pieces Dropped: "+ str(self.pieces_dropped) + " | Rows Cleared: " + str(self.rows_cleared))
+        if self.rows_cleared > 10:
+            pickle.dump(self.ai, open('agents/ai' + str(self.pieces_dropped) + "-" +str(self.rows_cleared) +'.pkl', 'wb'))
         return self.pieces_dropped, self.rows_cleared
 
     def run(self):
